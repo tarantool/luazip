@@ -157,7 +157,7 @@ static int zip_openfile (lua_State *L) {
     int i, m, n;
 
     /* how many extension were specified? */
-    n = luaL_getn(L, 2);
+    n = lua_objlen(L, 2);
 
     if (n > LUAZIP_MAX_EXTENSIONS)
     {
@@ -469,7 +469,7 @@ static int ff_seek (lua_State *L) {
   }
 }
 
-static const luaL_reg ziplib[] = {
+static const luaL_Reg ziplib[] = {
   {"open", zip_open},
   {"close", zip_close},
   {"type", zip_type},
@@ -478,7 +478,7 @@ static const luaL_reg ziplib[] = {
   {NULL, NULL}
 };
 
-static const luaL_reg flib[] = {
+static const luaL_Reg flib[] = {
   {"open", f_open},
   {"close", zip_close},
   {"files", f_files},
@@ -487,7 +487,7 @@ static const luaL_reg flib[] = {
   {NULL, NULL}
 };
 
-static const luaL_reg fflib[] = {
+static const luaL_Reg fflib[] = {
   {"read", ff_read},
   {"close", ff_close},
   {"seek", ff_seek},
